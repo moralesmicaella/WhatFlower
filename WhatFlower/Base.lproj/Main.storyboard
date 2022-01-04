@@ -16,17 +16,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RDB-SB-CFe">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RDB-SB-CFe">
+                                <rect key="frame" x="0.0" y="88" width="414" height="414"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="RDB-SB-CFe" secondAttribute="height" multiplier="1:1" id="aIo-s2-2zM"/>
+                                </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="hfw-gd-uAa">
+                                <rect key="frame" x="20" y="522" width="374" height="320"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="RDB-SB-CFe" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="3UA-7C-Ayl"/>
-                            <constraint firstItem="RDB-SB-CFe" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="EjE-0Z-3LQ"/>
-                            <constraint firstAttribute="bottom" secondItem="RDB-SB-CFe" secondAttribute="bottom" id="WHY-Xi-ZQI"/>
-                            <constraint firstItem="RDB-SB-CFe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="gUr-qU-MHZ"/>
+                            <constraint firstItem="hfw-gd-uAa" firstAttribute="top" secondItem="RDB-SB-CFe" secondAttribute="bottom" constant="20" id="NQQ-kb-eL2"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="hfw-gd-uAa" secondAttribute="bottom" constant="20" id="VCa-zK-DEd"/>
+                            <constraint firstItem="hfw-gd-uAa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Xsy-Ar-T79"/>
+                            <constraint firstItem="RDB-SB-CFe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="a6C-2c-Zpt"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hfw-gd-uAa" secondAttribute="trailing" constant="20" id="hHc-Yc-fdS"/>
+                            <constraint firstItem="RDB-SB-CFe" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="rKg-yI-cQB"/>
+                            <constraint firstItem="RDB-SB-CFe" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="z9q-lA-Abb"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="wmO-lz-uaA">
@@ -38,6 +50,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="flowerDescriptionLabel" destination="hfw-gd-uAa" id="sqh-06-2Tb"/>
                         <outlet property="flowerImageView" destination="RDB-SB-CFe" id="0bG-sb-IA8"/>
                     </connections>
                 </viewController>

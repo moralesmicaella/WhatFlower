@@ -8,10 +8,13 @@
 import UIKit
 import CoreML
 import Vision
+import Alamofire
+import AlamofireImage
 
 class ViewController: UIViewController {
     
     @IBOutlet var flowerImageView: UIImageView!
+    @IBOutlet var flowerDescriptionLabel: UILabel!
     
     let imagePicker = UIImagePickerController()
 
@@ -43,6 +46,7 @@ class ViewController: UIViewController {
             }
             
             self.title = result.identifier.capitalized
+            self.requestInfo(flowerName: result.identifier)
         }
         
         let handler = VNImageRequestHandler(ciImage: flowerImage, options: [:])
@@ -51,6 +55,38 @@ class ViewController: UIViewController {
         } catch {
             print(error)
         }
+    }
+    
+    func requestInfo(flowerName: String) {
+        let wikipediaURl = "https://en.wikipedia.org/w/api.php"
+        
+        let parameters : [String:String] = [
+            "format" : "json",
+            "action" : "query",
+            "prop" : "extracts|pageimages",
+            "exintro" : "",
+            "explaintext" : "",
+            "titles" : flowerName,
+            "indexpageids" : "",
+            "redirects" : "1",
+            "pithumbsize": "500"
+        ]
+        
+        AF.request(wikipediaURl, method: .get, parameters: parameters).responseDecodable(of: FlowerData.self) { (response) in
+            if let flowerData = response.value?.query {
+                let pageId = flowerData.pageids[0]
+                if let flowerPage = flowerData.pages[pageId] {
+                    let content = flowerPage.getContent()
+                    DispatchQueue.main.async {
+                        if let flowerImageUrl = URL(string: content.thumbnail.source) {
+                            self.flowerImageView.af.setImage(withURL: flowerImageUrl)
+                        }
+                        self.flowerDescriptionLabel.text = content.extract
+                    }
+                }
+            }
+        }
+
     }
     
 }
@@ -62,7 +98,6 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
                 fatalError("App failed to convert image to CIImage.")
             }
             detect(flowerImage: convertedCIImage)
-            flowerImageView.image = userPickedImage
         }
         
         imagePicker.dismiss(animated: true, completion: nil)

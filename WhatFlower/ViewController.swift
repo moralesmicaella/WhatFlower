@@ -16,7 +16,8 @@ class ViewController: UIViewController {
     @IBOutlet var flowerImageView: UIImageView!
     @IBOutlet var flowerDescriptionLabel: UILabel!
     
-    let imagePicker = UIImagePickerController()
+    private let imagePicker = UIImagePickerController()
+    var userPickedImage: UIImage?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,9 +74,11 @@ class ViewController: UIViewController {
         ]
         
         AF.request(wikipediaURl, method: .get, parameters: parameters).responseDecodable(of: FlowerData.self) { (response) in
-            if let flowerData = response.value?.query {
-                let pageId = flowerData.pageids[0]
-                if let flowerPage = flowerData.pages[pageId] {
+            switch response.result {
+            case .success(let flowerData):
+                let query = flowerData.query
+                let pageId = query.pageids[0]
+                if let flowerPage = query.pages[pageId] {
                     let content = flowerPage.getContent()
                     DispatchQueue.main.async {
                         if let flowerImageUrl = URL(string: content.thumbnail.source) {
@@ -84,6 +87,11 @@ class ViewController: UIViewController {
                         self.flowerDescriptionLabel.text = content.extract
                     }
                 }
+            case .failure(let error):
+                print(error)
+                self.flowerImageView.image = self.userPickedImage
+                self.flowerDescriptionLabel.text = "No data found!"
+                
             }
         }
 
@@ -94,6 +102,7 @@ class ViewController: UIViewController {
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let userPickedImage = info[.editedImage] as? UIImage {
+            self.userPickedImage = userPickedImage
             guard let convertedCIImage = CIImage(image: userPickedImage) else {
                 fatalError("App failed to convert image to CIImage.")
             }

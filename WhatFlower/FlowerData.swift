@@ -44,7 +44,7 @@ struct Content: Codable {
     let extract: String
     let thumbnail: ImageInfo
     
-    enum CodingKeys: String, CodingKey {
+    fileprivate enum CodingKeys: String, CodingKey {
         case extract, thumbnail
     }
 }

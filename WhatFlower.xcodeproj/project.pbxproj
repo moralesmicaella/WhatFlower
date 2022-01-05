@@ -17,6 +17,8 @@
 		249211F327848132000F13B3 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 249211F227848132000F13B3 /* Alamofire */; };
 		249211F82784853A000F13B3 /* FlowerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249211F72784853A000F13B3 /* FlowerData.swift */; };
 		249211FB2784FA76000F13B3 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 249211FA2784FA76000F13B3 /* AlamofireImage */; };
+		2492120C27854C2B000F13B3 /* FlowerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2492120B27854C2B000F13B3 /* FlowerManager.swift */; };
+		2492120E27854C34000F13B3 /* FlowerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2492120D27854C34000F13B3 /* FlowerModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		249211E727845AB3000F13B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		249211ED27845AD1000F13B3 /* FlowerClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = FlowerClassifier.mlmodel; sourceTree = "<group>"; };
 		249211F72784853A000F13B3 /* FlowerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerData.swift; sourceTree = "<group>"; };
+		2492120B27854C2B000F13B3 /* FlowerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerManager.swift; sourceTree = "<group>"; };
+		2492120D27854C34000F13B3 /* FlowerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,15 +70,41 @@
 			children = (
 				249211D927845AAF000F13B3 /* AppDelegate.swift */,
 				249211DB27845AAF000F13B3 /* SceneDelegate.swift */,
-				249211DD27845AAF000F13B3 /* ViewController.swift */,
-				249211DF27845AAF000F13B3 /* Main.storyboard */,
+				2492120827854BF9000F13B3 /* Model */,
+				2492120927854C06000F13B3 /* View */,
+				2492120A27854C0E000F13B3 /* Controller */,
 				249211E227845AB3000F13B3 /* Assets.xcassets */,
 				249211ED27845AD1000F13B3 /* FlowerClassifier.mlmodel */,
 				249211E427845AB3000F13B3 /* LaunchScreen.storyboard */,
 				249211E727845AB3000F13B3 /* Info.plist */,
-				249211F72784853A000F13B3 /* FlowerData.swift */,
 			);
 			path = WhatFlower;
+			sourceTree = "<group>";
+		};
+		2492120827854BF9000F13B3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				249211F72784853A000F13B3 /* FlowerData.swift */,
+				2492120D27854C34000F13B3 /* FlowerModel.swift */,
+				2492120B27854C2B000F13B3 /* FlowerManager.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2492120927854C06000F13B3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				249211DF27845AAF000F13B3 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2492120A27854C0E000F13B3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				249211DD27845AAF000F13B3 /* ViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -159,7 +189,9 @@
 				249211EE27845AD1000F13B3 /* FlowerClassifier.mlmodel in Sources */,
 				249211DE27845AAF000F13B3 /* ViewController.swift in Sources */,
 				249211DA27845AAF000F13B3 /* AppDelegate.swift in Sources */,
+				2492120E27854C34000F13B3 /* FlowerModel.swift in Sources */,
 				249211DC27845AAF000F13B3 /* SceneDelegate.swift in Sources */,
+				2492120C27854C2B000F13B3 /* FlowerManager.swift in Sources */,
 				249211F82784853A000F13B3 /* FlowerData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

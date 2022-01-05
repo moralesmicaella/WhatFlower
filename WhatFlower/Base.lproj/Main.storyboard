@@ -43,7 +43,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="wmO-lz-uaA">
                         <barButtonItem key="rightBarButtonItem" image="camera" catalog="system" id="t6B-N9-SD9">
-                            <color key="tintColor" systemColor="labelColor"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="cameraButtonPressed:" destination="BYZ-38-t0r" id="j7b-3N-yIr"/>
                             </connections>
@@ -66,6 +66,12 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="4nM-fk-Fmh">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <navigationBarAppearance key="scrollEdgeAppearance">
+                            <color key="backgroundColor" red="0.69876784089999999" green="0.41743004319999999" blue="0.80003398660000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <textAttributes key="titleTextAttributes">
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </textAttributes>
+                        </navigationBarAppearance>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -79,9 +85,6 @@
     </scenes>
     <resources>
         <image name="camera" catalog="system" width="128" height="94"/>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
